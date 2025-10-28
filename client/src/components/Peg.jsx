@@ -1,13 +1,14 @@
 const Peg = ({ player, cx, cy }) => {
+    let color = ""
     if(player == 0) {
-        return "blue"
+        color = "blue"
     } else if(player == 1) {
-        return "red"
+        color =  "red"
     } else {
-        return "black"
+        color = "black"
     }
-    
-    return <circle cx={cx} cy={cy} r="6"  fill = {props.color}/>
+
+    return <circle cx={cx} cy={cy} r="6" color = {color}/>
 }
 
 export default Peg
