@@ -2,7 +2,6 @@ export function createNode(id, row, col) {
     return { id, row, col, neighbors: [], player: null}
 }
 
-
 export function initGraph() {
     const nodes = []
     for(let r = 0; r < 24; r++) {
@@ -29,12 +28,19 @@ export function initGraph() {
     }
 
     // connect left most column to left node
+    for(let i = 0; i < 24; i++) {
+        nodes[i * 24].neighbors.push(578)
+    }
     
     // connect right most column to right node
-
+    for(let i = 0; i < 24; i++) {
+        nodes[((i + 1) * 24 ) - 1].neighbors.push(579)
+    }
 
     return nodes
 }
 
-let nodes = initGraph()
-console.log(nodes)
+export function addEdgeByNode(nodeA, nodeB) {
+    nodeA.neighbors.push(nodeB.id)
+    nodeB.neighbors.push(nodeA.id)
+}
