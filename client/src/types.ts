@@ -1,4 +1,4 @@
-export interface Node {
+export interface GraphNode {
   id: number;
   row: number;
   col: number;
@@ -6,4 +6,4 @@ export interface Node {
   player: number | undefined;
 }
 
-export type Graph = Node[];
+export type Graph = GraphNode[];

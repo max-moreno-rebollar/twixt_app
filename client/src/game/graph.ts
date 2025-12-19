@@ -1,6 +1,6 @@
-import type { Graph, Node } from "../types.ts";
+import type { Graph, GraphNode } from "../types.ts";
 
-export function initNode(id: number, row: number, col: number): Node {
+export function initNode(id: number, row: number, col: number): GraphNode {
   return { id, row, col, neighbors: [], player: undefined };
 }
 
@@ -41,7 +41,11 @@ export function initGraph(): Graph {
   return nodes;
 }
 
-export function addEdge(graph: Graph, nodeA: Node, nodeB: Node): Graph {
+export function addEdge(
+  graph: Graph,
+  nodeA: GraphNode,
+  nodeB: GraphNode
+): Graph {
   const newGraph = graph.map((node) => {
     if (node.id === nodeA.id) {
       return { ...node, neighbors: [...node.neighbors, nodeB.id] };

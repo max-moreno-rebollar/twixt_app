@@ -1,13 +1,14 @@
 import { useState } from "react";
-import * as Graph from "../game/graph.js";
+import { initGraph, addEdge } from "../game/graph.ts";
+import type { GraphNode } from "../types";
 import Peg from "./Peg.js";
 import Link from "./Link.js";
 
 const Board = () => {
-  const [graph, setGraph] = useState(Graph.initGraph());
+  const [graph, setGraph] = useState(initGraph());
   const spacing = 1000 / 24;
   const [currentPlayer, setPlayer] = useState(0);
-  const [validMoves, setValidMoves] = useState([]);
+  const [validMoves, setValidMoves] = useState<number[][]>([]);
   const [hoverNode, setHoverNode] = useState(null);
 
   const directions = [
@@ -29,8 +30,7 @@ const Board = () => {
     //console.log(player)
   }
 
-  function isValidMove(x, y) {
-    console.log(x, y);
+  function isValidMove(x: number, y: number) {
     let node = graph.find((node) => node.row == x && node.col == y);
 
     if (node == undefined) {
@@ -45,7 +45,7 @@ const Board = () => {
     return true;
   }
 
-  function handleMouseEnter(node: Node) {
+  function handleMouseEnter(node: GraphNode) {
     let valid = [];
     for (const [dx, dy] of directions) {
       let nx = node.row + dx;
