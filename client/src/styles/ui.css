@@ -68,3 +68,20 @@
   width: 100%;
   height: 100%;
 }
+
+/* Auth page shell (leans on MUI for layout) */
+.auth-page {
+  min-height: 100vh;
+  padding: 32px 20px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-hero {
+  max-width: 720px;
+}
+
+.auth-kicker {
+  letter-spacing: 0.08em;
+}
