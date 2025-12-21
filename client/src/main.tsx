@@ -5,6 +5,7 @@ import { CssBaseline, ThemeProvider, createTheme } from "@mui/material";
 import "./index.css";
 import App from "./App.js";
 import Login from "./pages/login.js";
+import Game from "./pages/Game.js";
 
 const theme = createTheme({
   palette: {
@@ -32,6 +33,7 @@ createRoot(document.getElementById("root")!).render(
         <Routes>
           <Route path="/" element={<App />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/game" element={<Game />} />
         </Routes>
       </BrowserRouter>
     </ThemeProvider>
