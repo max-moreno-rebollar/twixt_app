@@ -9,7 +9,6 @@ const Board = () => {
   const [graph, setGraph] = useState(initGraph());
   const [currentPlayer, setPlayer] = useState(0);
   const [validMoves, setValidMoves] = useState<number[][]>([]);
-  const [hoverNode, setHoverNode] = useState(null);
   const [links, setLinks] = useState<Edge[]>([]);
   const [winner, setWinner] = useState<number | undefined>(undefined);
 
@@ -36,7 +35,7 @@ const Board = () => {
     let node = graph.find((node) => node.row == x && node.col == y);
 
     if (node === undefined) {
-      console.log("node could not be found");
+      // console.log("node could not be found");
       return undefined;
     } else if (node.player === undefined) {
       return undefined;
@@ -99,7 +98,6 @@ const Board = () => {
     let node = graph.find((node) => node.row == x && node.col == y);
 
     if (node === undefined) {
-      console.log("node could not be found");
       return false;
     } else if (node.player !== undefined) {
       return false;
@@ -142,7 +140,6 @@ const Board = () => {
       let ny = node.col + dy;
 
       const otherNode = canCreateLink(nx, ny, currentPlayer);
-      console.log("otherNode: ", otherNode);
       if (otherNode) {
         const canidate = { nodeA: node, nodeB: otherNode };
         const intersects = links.some((link) =>
@@ -162,10 +159,7 @@ const Board = () => {
     setPlayer(1 - currentPlayer);
     setLinks(newLinks.concat(links));
     setWinner(newWinner);
-    console.log(graph);
   }
-
-  // console.log(currentPlayer);
 
   return (
     <Stack spacing={1.5}>
