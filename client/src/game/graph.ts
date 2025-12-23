@@ -62,20 +62,20 @@ export function addEdgeToGraph(
   return newGraph;
 }
 
+// Returns deep copy
 export function addEdgesToGraph(edges: Edge[], graph: Graph): Graph {
+  const newGraph = graph.map((node) => ({
+    ...node,
+    neighbors: [...node.neighbors],
+  }));
+
   for (const edge of edges) {
     const nodeA = edge.nodeA;
     const nodeB = edge.nodeB;
 
-    graph[nodeA.id].neighbors.push(nodeB.id);
-    graph[nodeB.id].neighbors.push(nodeA.id);
+    newGraph[nodeA.id].neighbors.push(nodeB.id);
+    newGraph[nodeB.id].neighbors.push(nodeA.id);
   }
-
-  const newGraph = graph.map((node) => {
-    return { ...node };
-  });
-
-  console.log(newGraph);
 
   return newGraph;
 }
